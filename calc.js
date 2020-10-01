@@ -1,6 +1,6 @@
 console.log("Javascript Calculator Made by Harsh Trivedi\nhttps://harsh98trivedi.github.io")
 
-document.getElementById('answer').readOnly = true;
+document.getElementById('answer').readOnly = true; //set this attribute in Html file
 let screen = document.getElementById('answer');
 buttons = document.querySelectorAll('button');
 let screenValue = '';
