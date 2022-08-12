@@ -17,16 +17,7 @@ for (item of buttons) {
             screenValue = "";
             screen.value = screenValue;
         } else if (buttonText == "=") {
-            // Check if there's a number directly infront of bracket
-            if (
-                screen.value.includes("(") &&
-                !isNaN(screen.value.charAt(screen.value.indexOf("(") - 1))
-            ) {
-                window.onBracketMultiplication();
-                return;
-            } else {
-                screen.value = eval(screenValue);
-            }
+            checkForBracketMulti(); // automatically evaluates if no brackets
         } else {
             screenValue += buttonText;
             screen.value = screenValue;
@@ -62,7 +53,7 @@ document.addEventListener("keydown", function (event) {
         screen.value = screenValue;
     }
     if (event.keyCode == 13 || event.keyCode == 187) {
-        screen.value = eval(screenValue);
+        checkForBracketMulti(); // automatically evaluates if no brackets
     } else if (event.keyCode == 46) {
         screenValue = "";
         screen.value = screenValue;
@@ -95,4 +86,17 @@ function addStr(str, index, stringToAdd) {
     return (
         str.substring(0, index) + stringToAdd + str.substring(index, str.length)
     );
+}
+
+function checkForBracketMulti() {
+    // Check if there's a number directly infront of a bracket
+    if (
+        screen.value.includes("(") &&
+        !isNaN(screen.value.charAt(screen.value.indexOf("(") - 1))
+    ) {
+        window.onBracketMultiplication();
+        return;
+    } else {
+        screen.value = eval(screenValue);
+    }
 }
