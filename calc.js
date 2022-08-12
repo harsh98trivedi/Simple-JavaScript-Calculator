@@ -17,7 +17,16 @@ for (item of buttons) {
             screenValue = "";
             screen.value = screenValue;
         } else if (buttonText == "=") {
-            screen.value = eval(screenValue);
+            // Check if there's a number directly infront of bracket
+            if (
+                screen.value.includes("(") &&
+                !isNaN(screen.value.charAt(screen.value.indexOf("(") - 1))
+            ) {
+                window.onBracketMultiplication();
+                return;
+            } else {
+                screen.value = eval(screenValue);
+            }
         } else {
             screenValue += buttonText;
             screen.value = screenValue;
@@ -76,3 +85,14 @@ window.onerror = function () {
     screen.value = screenValue;
     console.clear();
 };
+
+window.onBracketMultiplication = function () {
+    screenValue = addStr(screen.value, screen.value.indexOf("("), "*");
+    screen.value = eval(screenValue);
+};
+
+function addStr(str, index, stringToAdd) {
+    return (
+        str.substring(0, index) + stringToAdd + str.substring(index, str.length)
+    );
+}
