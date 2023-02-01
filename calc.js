@@ -28,7 +28,7 @@ for (item of buttons) {
 }
 
 document.addEventListener("keydown", function (event) {
-    console.log(event.which);
+    
     if (event.shiftKey == 57) {
         event.key = "(";
     } else if (event.shiftKey == 48) {
