@@ -18,13 +18,13 @@ function showHistory() {
         historyItem.style.fontSize = '30px';
         history.appendChild(historyItem);
     } else {
-        for (let index = 0; index < len; index++) {
+        for (let index = len-1; index >=0; index--) {
             const element = calcHistory[index];
             let historyItem = document.createElement('div');
             historyItem.className = 'historyelement';
             historyItem.innerHTML = `${element.screenValue} =  ${element.result}`;
             history.appendChild(historyItem);
-            if (index < len - 1) history.appendChild(document.createElement('hr'));
+            if (index > 0) history.appendChild(document.createElement('hr'));
         }
     }
     history.style.display = 'block';

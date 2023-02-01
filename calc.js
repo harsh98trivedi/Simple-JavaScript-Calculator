@@ -10,6 +10,7 @@ document.getElementById("answer").readOnly = true; //set this attribute in Html 
 let screen = document.getElementById("answer");
 buttons = document.querySelectorAll("button");
 let screenValue = "";
+let maxItems = 6;
 for (item of buttons) {
   item.addEventListener("click", (e) => {
     buttonText = e.target.innerText;
@@ -102,6 +103,12 @@ window.onerror = function () {
 window.onBracketMultiplication = function () {
   screenValue = addStr(screen.value, screen.value.indexOf("("), "*");
   screen.value = eval(screenValue);
+  let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
+  if(calcHistory.length >= maxItems){
+      calcHistory.shift();
+  }
+  calcHistory.push({screenValue, result : screen.value});
+  localStorage.setItem("calcHistory", JSON.stringify(calcHistory));
 };
 
 function addStr(str, index, stringToAdd) {
@@ -120,6 +127,12 @@ function checkForBracketMulti() {
     return;
   } else {
     screen.value = eval(screenValue);
+    let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
+    if(calcHistory.length >= maxItems){
+        calcHistory.shift();
+    }
+    calcHistory.push({screenValue, result : screen.value});
+    localStorage.setItem("calcHistory", JSON.stringify(calcHistory));
   }
   flag = 1;
 }
