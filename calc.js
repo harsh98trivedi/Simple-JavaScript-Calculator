@@ -75,20 +75,21 @@ document.addEventListener("keydown", function (event) {
     screenValue += event.key;
     screen.value = screenValue;
   }
-  if (event.keyCode == 13 || event.keyCode == 187) {
+  if (event.key == "Enter" || event.key == "=") {
+    event.preventDefault();
     checkForBracketMulti(); // automatically evaluates if no brackets
-  } else if (event.keyCode == 46) {
+  } else if (event.Key == "Delete") {
     screenValue = "";
     screen.value = screenValue;
     console.clear();
-  } else if (event.keyCode == 8) {
+  } else if (event.key == "Backspace") {
     screenValue = screenValue.slice(0, -1);
     screen.value = screenValue;
-  } else if (event.keyCode == 67) {
+  } else if (event.key == "c") {
     screenValue = "";
     screen.value = screenValue;
     console.clear();
-  } else if (event.keyCode == 82) {
+  } else if (event.key == "r") {
     location.reload();
   }
 });
@@ -104,10 +105,10 @@ window.onBracketMultiplication = function () {
   screenValue = addStr(screen.value, screen.value.indexOf("("), "*");
   screen.value = eval(screenValue);
   let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
-  if(calcHistory.length >= maxItems){
-      calcHistory.shift();
+  if (calcHistory.length >= maxItems) {
+    calcHistory.shift();
   }
-  calcHistory.push({screenValue, result : screen.value});
+  calcHistory.push({ screenValue, result: screen.value });
   localStorage.setItem("calcHistory", JSON.stringify(calcHistory));
 };
 
@@ -128,10 +129,10 @@ function checkForBracketMulti() {
   } else {
     screen.value = eval(screenValue);
     let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
-    if(calcHistory.length >= maxItems){
-        calcHistory.shift();
+    if (calcHistory.length >= maxItems) {
+      calcHistory.shift();
     }
-    calcHistory.push({screenValue, result : screen.value});
+    calcHistory.push({ screenValue, result: screen.value });
     localStorage.setItem("calcHistory", JSON.stringify(calcHistory));
   }
   flag = 1;
