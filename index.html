@@ -62,6 +62,12 @@
 </head>
 
 <body>
+	<div class="toggle-container">
+        <label class="toggle-switch">
+            <input type="checkbox" id="toggle-mode" />
+            <span class="toggle-slider"></span>
+        </label>
+    </div>
 	<div class="container">
 		<h1><a style="text-decoration: none; color: #f1c40f; margin-left: 0.25rem;" href="" onclick="location.reload();">CALCULATOR</a><img id="historybutton" src="history.png"></h1 >
 		<div class="calculator">
@@ -113,4 +119,12 @@
 </body>
 <script src="hist.js"></script>
 <script src="calc.js"></script>
+<script>
+	const toggleMode = document.getElementById('toggle-mode');
+	const container = document.querySelector('.container');
+
+	toggleMode.addEventListener('change', function() {
+		container.classList.toggle('dark-mode');
+	});
+</script>
 </html>
