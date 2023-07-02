@@ -128,6 +128,7 @@ function checkForBracketMulti() {
     return;
   } else {
     screen.value = eval(screenValue);
+    screenValue = screen.value;
     let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
     if (calcHistory.length >= maxItems) {
       calcHistory.shift();
