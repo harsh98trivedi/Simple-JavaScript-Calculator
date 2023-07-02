@@ -22,7 +22,7 @@ function showHistory() {
             const element = calcHistory[index];
             let historyItem = document.createElement('div');
             historyItem.className = 'historyelement';
-            historyItem.innerHTML = `${element.screenValue} =  ${element.result}`;
+            historyItem.innerHTML = `${element.lastScreenValue} =  ${element.result}`;
             history.appendChild(historyItem);
             if (index > 0) history.appendChild(document.createElement('hr'));
         }
