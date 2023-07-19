@@ -58,6 +58,7 @@
     <meta property="twitter:image:src"
         content="https://raw.github.com/harsh98trivedi/Simple-JavaScript-Calculator/master/meta.jpg" />
 	<meta property="twitter:image" content="Calculator by Harsh Trivedi" />
+ 
 	<link rel='icon' type='image/x-icon' href='favicon.png' />
 </head>
 
@@ -69,14 +70,36 @@
         </label>
     </div>
 	<div class="container">
-		<h1><a style="text-decoration: none; color: #f1c40f; margin-left: 0.25rem;" href="" onclick="location.reload();">CALCULATOR</a><img id="historybutton" src="history.png"></h1 >
+		<h1><a style="text-decoration: none; color: #f1c40f; margin-left: 1.25rem;" href="" onclick="location.reload();">CALCULATOR</a>
+			<img id="historybutton" src="history.png">	</h1>&nbsp;&nbsp;
+
+
+
+
+			<!-- </h1 > -->
 		<div class="calculator">
 			<input type="text" name="screen" id="answer" readonly>
 			<table>
 				<tr>
 					<td><button>(</button></td>
 					<td><button>)</button></td>
-					<td><button style="background-color: #f01600; font-weight: bold; color: #ecf0f1;">C</button></td>
+					<!-- <td><button style="background-color: #f01600; font-weight: bold; color: #ecf0f1;" onclick="deleteLastEntry()">C</button></td> -->
+					<td>
+						<div class="row">
+							<div class="col">
+							  <button style="background-color: #f01600; font-weight: bold; color: #ecf0f1; width: 140px;font-size: 35px;" onclick="clearAll()">C</button>
+							</div>
+							<div class="col">
+							  <button style="background-color: #f01600; font-weight: bold; color: #ecf0f1;width: 140px;font-size: 35px;" onclick="deleteLastEntry()">CE</button>
+							</div>
+						  </div>
+
+						</td>
+						
+
+<!-- <td colspan="2"><button style="background-color: #f01600; font-weight: bold; color: #ecf0f1;" onclick="deleteLastEntry()">C</button></td>					
+</td> -->
+					 
 					<td><button>%</button></td>
 				</tr>
 				<tr>
@@ -115,7 +138,7 @@
 	</div>
     <div id="turn">
     PLEASE TURN YOUR DEVICE
-	</div>
+	</div> 
 </body>
 <script src="hist.js"></script>
 <script src="calc.js"></script>

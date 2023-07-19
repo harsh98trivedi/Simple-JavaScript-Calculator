@@ -33,7 +33,7 @@ for (item of buttons) {
       isSign = true;
     } else if (buttonText == "=") {
       checkForBracketMulti(); // automatically evaluates if no brackets
-      //
+    
     } else if (isNumber(buttonText)) {
       if (flag == 1) {
         screenValue = buttonText;
@@ -57,9 +57,7 @@ for (item of buttons) {
 }
 
 document.addEventListener("keydown", function (event) {
-  if (
-    event.key <= 9
-  ) {
+  if (event.key <= 9) {
     screenValue += event.key;
     screen.value = screenValue;
     isSign = false;
@@ -144,3 +142,4 @@ function checkForBracketMulti() {
   }
   flag = 1;
 }
+

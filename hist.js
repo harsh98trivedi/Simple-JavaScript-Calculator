@@ -2,6 +2,7 @@ let historybutton = document.getElementById('historybutton');
 let history = document.getElementById('history');
 let bar1 = document.getElementById('bar1');
 let bar2 = document.getElementById('bar2');
+let dis=document.getElementById('answer');
 
 function showHistory() {
     let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
@@ -15,7 +16,7 @@ function showHistory() {
         let historyItem = document.createElement('div');
         historyItem.innerHTML = "There's no history yet.";
         historyItem.className = 'historyelement his';
-        historyItem.style.fontSize = '30px';
+        historyItem.style.fontSize = '25px';
         history.appendChild(historyItem);
     } else {
         for (let index = len-1; index >=0; index--) {
@@ -27,16 +28,31 @@ function showHistory() {
             if (index > 0) history.appendChild(document.createElement('hr'));
         }
     }
+
     history.style.display = 'block';
 }
 
 historybutton.addEventListener('click', showHistory);
+
+function clearAll(){
+    dis.value=''
+}
 
 function hide(){
     history.style.display = 'none';
     bar1.style.display = 'none';
     bar2.style.display = 'none';
 }
+function deleteLastEntry() {
+    let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
+    if (calcHistory.length > 0) {
+      calcHistory.pop(); 
+      localStorage.setItem("calcHistory", JSON.stringify(calcHistory));
+      showHistory(); // It open each time when u click on CE if u dont want then u can remove it ....
+    }
+  }
+
+
 
 bar1.addEventListener('click', hide);
 bar2.addEventListener('click', hide);

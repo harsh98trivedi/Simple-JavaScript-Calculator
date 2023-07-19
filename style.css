@@ -8,9 +8,9 @@ html {
     background-color: rgb(23, 24, 37);
     font-family: 'Fjalla One', sans-serif;
     animation: fadein 1.5s;
+    font-family: 'Times New Roman', Times, serif;
 }
-
-@keyframes fadein {
+ @keyframes fadein {
     0% {
         opacity: 0%;
     }
@@ -23,7 +23,7 @@ h1 {
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 0;
-}
+} 
 
 input {
     background-color: rgba(52, 73, 94, 0.5);
@@ -32,7 +32,7 @@ input {
     text-align: right;
     border: none;
     font-size: 3rem;
-    width: 78vw;
+    width: 80vw;
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
     padding: 0.5rem 1.5rem;
@@ -67,7 +67,7 @@ button {
     padding: 0.5rem 0;
     margin: 0.25vmax;
     font-size: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     -moz-transition: all ease 0.5s;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
@@ -127,7 +127,7 @@ a:hover{
     height: 80vh;
     top:10vh;
     background-color: white;
-    border: 2px solid black;
+    border: 6px solid black;
     border-radius: 10px;
     display: none;
     /* overflow-y: scroll; */
@@ -171,8 +171,9 @@ a:hover{
 
 .toggle-container {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 4rem;
+    left: 3rem;
+    
 }
 
 .toggle-switch {
@@ -212,15 +213,19 @@ a:hover{
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
+    border-radius: 10px;
 }
 
 input:checked + .toggle-slider {
     background-color: #2a2c2e;
+    border-radius: 10px;
 }
 
 input:focus + .toggle-slider {
     box-shadow: 0 0 1px #2b2c2d;
+    border-radius: 10px;
 }
+
 
 input:checked + .toggle-slider:before {
     -webkit-transform: translateX(26px);
@@ -232,28 +237,42 @@ input:checked + .toggle-slider:before {
 
 .dark-mode {
     background-color: black;
+    border-radius: 10px;
     color: #fff;
 }
 
 .dark-mode body,
 .dark-mode html {
      background-color: black; 
+     border-radius: 10px;
+     
 }
 
 .dark-mode .calculator {
      background-color: black; 
+     border-radius: 10px;
+   
 }
 
 .dark-mode table {
     color: #fff;
+    border-radius: 10px;
 }
 
 .dark-mode button {
     background-color: #555;
     color: #fff;
+    border-radius: 10px;
 }
 
 
  .dark-mode a {
     color: #fff;
+    border-radius: 10px;
 }
+
+.row{
+    display: flex;
+    font-size: 1rem;
+}
+ 
