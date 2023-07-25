@@ -23,7 +23,7 @@ function showHistory() {
             const element = calcHistory[index];
             let historyItem = document.createElement('div');
             historyItem.className = 'historyelement';
-            historyItem.innerHTML = `${element.lastScreenValue} =  ${element.result}`;
+            historyItem.innerHTML = `${element.lastScreenValue} = <span style="color: ${element.result < 0 ? 'red' : 'green'}">${element.result}</span>`;//Actually I have added this that makes red color in the history section .............
             history.appendChild(historyItem);
             if (index > 0) history.appendChild(document.createElement('hr'));
         }
