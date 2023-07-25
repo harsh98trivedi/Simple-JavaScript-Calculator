@@ -8,7 +8,7 @@ html {
     background-color: rgb(23, 24, 37);
     font-family: 'Fjalla One', sans-serif;
     animation: fadein 1.5s;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Fjalla One', sans-serif;
 }
  @keyframes fadein {
     0% {
@@ -274,5 +274,6 @@ input:checked + .toggle-slider:before {
 .row{
     display: flex;
     font-size: 1rem;
+    justify-content: center;
 }
  
