@@ -275,5 +275,7 @@ input:checked + .toggle-slider:before {
     display: flex;
     font-size: 1rem;
     justify-content: center;
+    max-width: 20vw;
+    margin: auto;
 }
  
