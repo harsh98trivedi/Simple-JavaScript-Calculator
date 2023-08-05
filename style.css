@@ -276,3 +276,6 @@ input:checked + .toggle-slider:before {
     font-size: 1rem;
 }
  
+#answer {
+    caret-color: #0f38f1;
+}
