@@ -279,3 +279,6 @@ input:checked + .toggle-slider:before {
     margin: auto;
 }
  
+#answer {
+    caret-color: #0f38f1;
+}
