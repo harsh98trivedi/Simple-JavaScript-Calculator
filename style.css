@@ -282,3 +282,7 @@ input:checked + .toggle-slider:before {
 #answer {
     caret-color: #0f38f1;
 }
+/* Negative Numbers */
+.negative {
+    color: red;
+  }
