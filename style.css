@@ -1,3 +1,4 @@
+/* Reset some default styles and apply common styles */
 body,
 html {
     padding: 0;
@@ -8,23 +9,26 @@ html {
     background-color: rgb(23, 24, 37);
     font-family: 'Fjalla One', sans-serif;
     animation: fadein 1.5s;
-    font-family: 'Fjalla One', sans-serif;
 }
- @keyframes fadein {
+
+/* Keyframes for fade-in animation */
+@keyframes fadein {
     0% {
         opacity: 0%;
     }
-    100%   {
+    100% {
         opacity: 100%;
     }
-  }
+}
 
+/* Heading styles */
 h1 {
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 0;
-} 
+}
 
+/* Input field styles */
 input {
     background-color: rgba(52, 73, 94, 0.5);
     color: #ecf0f1;
@@ -36,11 +40,10 @@ input {
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
     padding: 0.5rem 1.5rem;
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
+/* Container styles */
 .container {
     margin: auto;
     text-align: center;
@@ -50,15 +53,18 @@ input {
     transform: translate(-50%, -50%);
 }
 
+/* Calculator container styles */
 .calculator {
     padding: 0.25rem;
     display: inline-block;
 }
 
+/* Table styles (for calculator buttons) */
 table {
     margin: auto;
 }
 
+/* Button styles */
 button {
     border: none;
     background-color: white;
@@ -68,114 +74,75 @@ button {
     margin: 0.25vmax;
     font-size: 2vmax;
     border-radius: 1rem;
-    -moz-transition: all ease 0.5s;
-    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    -o-transition: all ease 0.5s;
 }
+
+/* Button styles on active (clicked) */
 button:active {
     transform: scale(0.95);
-    /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
 }
 
+/* Button styles on hover */
 button:hover {
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    -moz-transition: all ease 0.5s;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    -o-transition: all ease 0.5s;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-a{
+/* Anchor (link) styles */
+a {
     outline: none;
-    -moz-transition: all ease 0.5s;
-    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    -o-transition: all ease 0.5s;
 }
 
-a:hover{
+/* Anchor styles on hover */
+a:hover {
     text-shadow: 0px 0px 10px rgba(241, 196, 15, 0.5);
-    -moz-transition: all ease 0.5s;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    -o-transition: all ease 0.5s;
 }
 
+/* Message for turning device (landscape orientation) */
 #turn {
     display: none;
     z-index: 100;
     position: fixed;
 }
 
-#historybutton{
-    width:40px;
-    height:40px;
+/* History button styles */
+#historybutton {
+    width: 40px;
+    height: 40px;
     border-radius: 20px;
-    float:right; 
-    margin-right:15px;
+    float: right;
+    margin-right: 15px;
     cursor: pointer;
 }
 
-#history{
+/* History container styles */
+#history {
     position: absolute;
-    width:90%;
+    width: 90%;
     height: 80vh;
-    top:10vh;
+    top: 10vh;
     background-color: white;
     border: 6px solid black;
     border-radius: 10px;
     display: none;
-    /* overflow-y: scroll; */
 }
 
-.historyelement{
+/* History element styles */
+.historyelement {
     color: black;
     margin: 20px;
     font-size: 40px;
 }
 
-#bar1, #bar2{
-    position: absolute;
-    width:30px;
-    height: 4px;
-    background-color: white;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-left: 93%;
-    transform: rotate(45deg);
-    cursor: pointer;
-    display: none;
-}
-
-#bar2{
-    transform: rotate(135deg);
-}
-
-@media (orientation: landscape) and (max-height: 500px) {
-    #turn {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        color: rgba(52, 73, 94, 1.0);
-        background-color: rgba(236, 240, 241, 1.0);
-    }
-}
-
+/* Toggle switch container styles */
 .toggle-container {
     position: absolute;
     top: 4rem;
     left: 3rem;
-    
 }
 
+/* Toggle switch styles */
 .toggle-switch {
     position: relative;
     display: inline-block;
@@ -183,12 +150,14 @@ a:hover{
     height: 34px;
 }
 
+/* Toggle switch input styles */
 .toggle-switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
+/* Toggle slider styles */
 .toggle-slider {
     position: absolute;
     cursor: pointer;
@@ -197,11 +166,11 @@ a:hover{
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
 }
 
+/* Toggle slider before styles */
 .toggle-slider:before {
     position: absolute;
     content: "";
@@ -210,79 +179,51 @@ a:hover{
     left: 4px;
     bottom: 4px;
     background-color: rgb(233, 227, 227);
-    -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
-    border-radius: 10px;
 }
 
+/* Toggle switch styles when checked */
 input:checked + .toggle-slider {
     background-color: #2a2c2e;
     border-radius: 10px;
 }
 
+/* Toggle switch styles on focus */
 input:focus + .toggle-slider {
     box-shadow: 0 0 1px #2b2c2d;
     border-radius: 10px;
 }
 
-
-input:checked + .toggle-slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
 /* Dark mode styles */
-
 .dark-mode {
     background-color: black;
-    border-radius: 10px;
     color: #fff;
 }
 
 .dark-mode body,
 .dark-mode html {
-     background-color: black; 
-     border-radius: 10px;
-     
+    background-color: black;
 }
 
 .dark-mode .calculator {
-     background-color: black; 
-     border-radius: 10px;
-   
+    background-color: black;
 }
 
 .dark-mode table {
     color: #fff;
-    border-radius: 10px;
 }
 
 .dark-mode button {
     background-color: #555;
     color: #fff;
-    border-radius: 10px;
 }
 
-
- .dark-mode a {
+.dark-mode a {
     color: #fff;
-    border-radius: 10px;
 }
 
-.row{
-    display: flex;
-    font-size: 1rem;
-    justify-content: center;
-    max-width: 20vw;
-    margin: auto;
-}
- 
-#answer {
-    caret-color: #0f38f1;
-}
-/* Negative Numbers */
+/* Styling for negative numbers (if applicable) */
 .negative {
     color: red;
-  }
+}
