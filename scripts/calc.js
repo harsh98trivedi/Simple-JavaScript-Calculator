@@ -1,6 +1,7 @@
 console.log(
   "Javascript Calculator Made by Harsh Trivedi\nhttps://harsh98trivedi.github.io"
 );
+
 let flag = 0;
 
 function isNumber(char) {
