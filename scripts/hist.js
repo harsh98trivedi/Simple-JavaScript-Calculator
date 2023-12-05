@@ -2,7 +2,7 @@ let historybutton = document.getElementById('historybutton');
 let history = document.getElementById('history');
 let bar1 = document.getElementById('bar1');
 let bar2 = document.getElementById('bar2');
-let dis=document.getElementById('answer');
+let dis = document.getElementById('answer');
 
 function showHistory() {
     let calcHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
@@ -19,7 +19,7 @@ function showHistory() {
         historyItem.style.fontSize = '25px';
         history.appendChild(historyItem);
     } else {
-        for (let index = len-1; index >=0; index--) {
+        for (let index = len-1; index >= 0; index--) {
             const element = calcHistory[index];
             let historyItem = document.createElement('div');
             historyItem.className = 'historyelement';
@@ -35,7 +35,7 @@ function showHistory() {
 historybutton.addEventListener('click', showHistory);
 
 function clearAll(){
-    dis.value=''
+    dis.value = '';
 }
 
 function hide(){

@@ -23,6 +23,10 @@ h1 {
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 0;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 } 
 
 input {
@@ -65,6 +69,7 @@ button {
     width: 20vw;
     height: 10vh;
     padding: 0.5rem 0;
+    cursor: pointer;
     margin: 0.25vmax;
     font-size: 2vmax;
     border-radius: 1rem;
@@ -116,8 +121,6 @@ a:hover{
     width:40px;
     height:40px;
     border-radius: 20px;
-    float:right; 
-    margin-right:15px;
     cursor: pointer;
 }
 
@@ -169,11 +172,23 @@ a:hover{
     }
 }
 
+@media (max-width: 700px) {
+    td button{
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+
 .toggle-container {
-    position: absolute;
-    top: 4rem;
-    left: 3rem;
+    margin: 10px -10px 0 0;
     
+}
+
+.tittle{
+    text-decoration: none; 
+    color: #f1c40f;
+    cursor: pointer;
+    margin-left: -20px;
 }
 
 .toggle-switch {
@@ -277,6 +292,19 @@ input:checked + .toggle-slider:before {
     justify-content: center;
     max-width: 20vw;
     margin: auto;
+}
+
+.row .col button{
+    background-color: #f01600;
+    font-weight: bold;
+    color: #ecf0f1; 
+    width: 8vw;
+}
+
+@media (max-width: 700px) {
+    .row .col button{
+        width: 10vw;
+    }
 }
  
 #answer {
