@@ -49,15 +49,16 @@
 	<link rel='icon' type='image/x-icon' href='./images/favicon.ico' />
 </head>
 <body>
-    <div class="toggle-container">
-        <label class="toggle-switch">
-            <input type="checkbox" id="toggle-mode" />
-            <span class="toggle-slider"></span>
-        </label>
-    </div>
+    
 	<div class="container">
         <h1>
-            <a style="text-decoration: none; color: #f1c40f; margin-left: 1.25rem; cursor: pointer;" onclick="location.reload();">CALCULATOR</a>
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggle-mode" />
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <a class="tittle" onclick="location.reload();">CALCULATOR</a>
             <img id="historybutton" src="./images/history.png">	
         </h1>
         <div class="calculator">
@@ -69,10 +70,10 @@
                     <td>
                         <div class="row">
                             <div class="col">
-                                <button style="background-color: #f01600; font-weight: bold; color: #ecf0f1; width: 8vw;" onclick="clearAll()">C</button>
+                                <button onclick="clearAll()">C</button>
                             </div>
                             <div class="col">
-                                <button style="background-color: #f01600; font-weight: bold; color: #ecf0f1;width: 8vw;" onclick="deleteLastEntry()">CE</button>
+                                <button onclick="deleteLastEntry()">CE</button>
                             </div>
                         </div>
                     </td>
