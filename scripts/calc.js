@@ -91,7 +91,13 @@ function checkForBracketMulti() {
   // ... (same code as before)
 
   if (eval(screenValue) !== undefined) {
-    screen.value = eval(screenValue);
+    if (!Number.isInteger(eval(screenValue))){
+      screen.value = eval(screenValue).toFixed(2); 
+    }
+    else {
+      screen.value = eval(screenValue);
+    }
+    
     lastScreenValue = screenValue;
     screenValue = screen.value;
     if (parseFloat(screen.value) < 0) {
