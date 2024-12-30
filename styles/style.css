@@ -314,3 +314,8 @@ input:checked + .toggle-slider:before {
 .negative {
     color: red;
   }
+
+/* visual effect on pressing button */
+.clicked {
+    transform: scale(0.68); /* Slightly shrink the button */
+}
