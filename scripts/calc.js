@@ -19,7 +19,38 @@ let isSign = true;
 for (item of buttons) {
   item.addEventListener("click", (e) => {
     buttonText = e.target.innerText;
-    if (buttonText == "X" && !isSign) {
+
+    // 根号功能
+    if (buttonText == "√" && !isSign) {
+      if (flag == 1) {
+        flag = 0;
+      }
+      screenValue = Math.sqrt(eval(screen.value));
+      screen.value = screenValue;
+    }
+
+    // sin, cos, tan 功能
+    else if (buttonText == "sin" || buttonText == "cos" || buttonText == "tan") {
+      if (flag == 1) {
+        flag = 0;
+      }
+      let angle = eval(screen.value);
+      let result;
+
+      if (buttonText == "sin") {
+        result = Math.sin(toRadians(angle));
+      } else if (buttonText == "cos") {
+        result = Math.cos(toRadians(angle));
+      } else if (buttonText == "tan") {
+        result = Math.tan(toRadians(angle));
+      }
+
+      screenValue = result;
+      screen.value = screenValue;
+    }
+
+    // 其他按钮处理
+    else if (buttonText == "X" && !isSign) {
       if (flag == 1) {
         flag = 0;
       }
@@ -42,14 +73,13 @@ for (item of buttons) {
       } else {
         screen.classList.remove("negative");
       }
-    } else if(buttonText=="(" || buttonText==")") {
-      if(flag==1){
-        flag =0;
+    } else if (buttonText == "(" || buttonText == ")") {
+      if (flag == 1) {
+        flag = 0;
       }
-      screenValue+=buttonText;
-      screen.value=screenValue;
-    } 
-    else if (isNumber(buttonText)) {
+      screenValue += buttonText;
+      screen.value = screenValue;
+    } else if (isNumber(buttonText)) {
       if (flag == 1) {
         screenValue = buttonText;
         flag = 0;
@@ -85,19 +115,15 @@ window.onerror = function () {
   console.clear();
 };
 
-// ... (same code as before)
-
 function checkForBracketMulti() {
-  // ... (same code as before)
-
+  // Check for potential multiple operations after brackets and eval expression.
   if (eval(screenValue) !== undefined) {
-    if (!Number.isInteger(eval(screenValue))){
-      screen.value = eval(screenValue).toFixed(2); 
-    }
-    else {
+    if (!Number.isInteger(eval(screenValue))) {
+      screen.value = eval(screenValue).toFixed(2);
+    } else {
       screen.value = eval(screenValue);
     }
-    
+
     lastScreenValue = screenValue;
     screenValue = screen.value;
     if (parseFloat(screen.value) < 0) {
@@ -105,7 +131,11 @@ function checkForBracketMulti() {
     } else {
       screen.classList.remove("negative");
     }
-    // ... (same code as before)
   }
   flag = 1;
+}
+
+// 将角度转换为弧度
+function toRadians(degrees) {
+  return degrees * (Math.PI / 180);
 }
