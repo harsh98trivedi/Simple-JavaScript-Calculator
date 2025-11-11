@@ -50,39 +50,37 @@ const screen = document.getElementById('answer');
       renderHistory();
     };
 
-    // Calculator (BODMAS)
+    // Calculator (BODMAS) with sqrt and power support
     function calculate(expr) {
-      try {
-        const tokens = expr.match(/(\d+(\.\d+)?|[+\-*/%()])/g);
-        const prec = { '+': 1, '-': 1, '*': 2, '/': 2, '%': 2 };
-        const output = [], ops = [];
-        tokens.forEach(t => {
-          if (!isNaN(t)) output.push(parseFloat(t));
-          else if (t in prec) {
-            while (ops.length && prec[ops[ops.length - 1]] >= prec[t]) output.push(ops.pop());
-            ops.push(t);
-          } else if (t === '(') ops.push(t);
-          else if (t === ')') { while (ops[ops.length - 1] !== '(') output.push(ops.pop()); ops.pop(); }
-        });
-        while (ops.length) output.push(ops.pop());
-        const stack = [];
-        output.forEach(t => {
-          if (typeof t === 'number') stack.push(t);
-          else {
-            const b = stack.pop(), a = stack.pop();
-            if (typeof a === 'undefined' || typeof b === 'undefined') throw Error('Malformed');
-            if (t === '+') stack.push(a + b);
-            if (t === '-') stack.push(a - b);
-            if (t === '*') stack.push(a * b);
-            if (t === '/') stack.push(a / b);
-            if (t === '%') stack.push(a % b);
-          }
-        });
-        return stack[0];
-      } catch {
-        return 'Err';
-      }
+  try {
+    // 1️⃣ Handle sqrt → Math.sqrt
+    expr = expr.replace(/sqrt\s*\(/g, 'Math.sqrt(');
+
+    // 2️⃣ Handle power operator ^ → **
+    expr = expr.replace(/\^/g, '**');
+
+    // 3️⃣ Allow safe characters only (numbers, operators, parentheses, dots, Math.sqrt)
+    const checkExpr = expr.replace(/Math\.sqrt/g, '');
+    if (/[^0-9+\-*/().\s**]/.test(checkExpr)) {
+      throw new Error('Invalid characters');
     }
+
+    // 4️⃣ Evaluate expression safely
+    const result = Function('"use strict"; return (' + expr + ')')();
+
+    // 5️⃣ Handle invalid results
+    if (typeof result !== 'number' || isNaN(result) || !isFinite(result)) {
+      return 'Err';
+    }
+
+    // 6️⃣ Round result (optional)
+    return Number.isInteger(result) ? result : parseFloat(result.toFixed(6));
+  } catch (err) {
+    return 'Err';
+  }
+}
+
+
 
     // Button click and keyboard support
     buttons.forEach(b => {
@@ -98,6 +96,12 @@ const screen = document.getElementById('answer');
           }
         } else if (val === 'C') {
           screen.value = '';
+        } else if (val === '⌫') {
+          screen.value = screen.value.slice(0, -1);
+        } else if (val === 'sqrt') {
+          screen.value += 'sqrt(';
+        } else if (val === '^') {
+          screen.value += '^';
         } else {
           screen.value += val;
         }
@@ -121,6 +125,14 @@ const screen = document.getElementById('answer');
       }
       if (e.key === 'Backspace') {
         screen.value = screen.value.slice(0, -1);
+        e.preventDefault();
+      }
+      if (e.key === '^') {
+        screen.value += '^';
+        e.preventDefault();
+      }
+      if (e.key.toLowerCase() === 's') {
+        screen.value += 'sqrt(';
         e.preventDefault();
       }
       if (e.key.toLowerCase() === 'd') {
