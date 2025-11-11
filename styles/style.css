@@ -1,56 +1,220 @@
-/* Improved button styling */
+/* ========================================
+   PREMIUM BUTTON STYLING
+   ======================================== */
+
+/* Base button styling with advanced effects */
 .calc-btn {
-@apply px-8 py-5 rounded-full border-2 text-3xl font-semibold
-        border-gray-400 dark:border-gray-600 bg-gray-100 dark:bg-gray-700
-        text-gray-900 dark:text-gray-100
+@apply px-8 py-5 rounded-2xl border-0 text-3xl font-bold
+        bg-gradient-to-br from-gray-100 via-gray-50 to-white 
+        dark:from-gray-600 dark:via-gray-700 dark:to-gray-600
+        text-gray-900 dark:text-white
         cursor-pointer
-        transition-colors duration-200 ease-in-out
-        focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-offset-2
-        select-none;
+        transition-all duration-300 ease-out
+        focus:outline-none focus:ring-4 focus:ring-amber-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900
+        select-none
+        shadow-lg hover:shadow-2xl hover:-translate-y-2 
+        active:shadow-md active:translate-y-0
+        transform origin-center
+        relative overflow-hidden;
 box-sizing: border-box;
 user-select: none;
 text-align: center;
 min-width: 2.5rem;
 min-height: 2.5rem;
+letter-spacing: 0.05em;
+font-variation-settings: "wght" 700;
 }
 
-/* Clear button - strong red */
-.calc-btn.bg-red-500 {
-@apply bg-red-600 border-red-600 text-white font-bold;
+/* Button shine effect overlay */
+.calc-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
+opacity: 0;
+transition: opacity 0.3s ease;
+border-radius: 1rem;
+pointer-events: none;
 }
-.calc-btn.bg-red-500:hover,
-.calc-btn.bg-red-500:focus-visible {
-@apply bg-red-700 border-red-700;
+
+.calc-btn:hover::before {
+opacity: 1;
+}
+
+/* Hover state with enhanced lift */
+.calc-btn:hover {
+background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 50%, #f0f1f3 100%);
+}
+
+.dark .calc-btn:hover {
+background: linear-gradient(135deg, #4b5563 0%, #5a6b7f 50%, #4a5a6e 100%);
+}
+
+/* Press animation */
+.calc-btn:active {
+@apply transform scale-95 shadow-inner; 
+}
+
+/* Focus visible state */
+.calc-btn:focus-visible {
+@apply ring-4 ring-amber-400 ring-offset-2;
+}/* Clear button - premium red gradient */
+.calc-btn.bg-red-500 {
+background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+@apply border-0 text-white font-bold;
+box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.calc-btn.bg-red-500:hover {
+background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
+box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+@apply -translate-y-2;
 }
 .calc-btn.bg-red-500:active {
-@apply bg-red-800;
+background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #7f1d1d 100%);
+box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+@apply translate-y-0 scale-95;
 }
 
-/* Operator buttons - bright yellow */
+/* Operator buttons - vibrant amber gradient */
 .calc-btn.bg-yellow-400 {
-@apply bg-yellow-400 border-yellow-400 text-gray-900 font-bold;
+background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+@apply border-0 text-gray-900 font-bold;
+box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+position: relative;
 }
-.calc-btn.bg-yellow-400:hover,
-.calc-btn.bg-yellow-400:focus-visible {
-@apply bg-yellow-500 border-yellow-500;
+.calc-btn.bg-yellow-400::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+opacity: 0;
+transition: opacity 0.3s ease;
+border-radius: 1rem;
+pointer-events: none;
+}
+.calc-btn.bg-yellow-400:hover::after {
+opacity: 1;
+}
+.calc-btn.bg-yellow-400:hover {
+background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%);
+box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+@apply -translate-y-2;
 }
 .calc-btn.bg-yellow-400:active {
-@apply bg-yellow-600;
+background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.15);
+@apply scale-95;
 }
 
-/* Equals button - bright yellow with bigger font */
+/* Equals button - premium emerald gradient */
 .calc-btn.bg-emerald-500 {
-@apply bg-yellow-400 border-yellow-500 text-gray-900 font-extrabold;
+background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+@apply border-0 text-white font-extrabold;
 font-size: 2.5rem;
-padding-top: 0.5rem;
-padding-bottom: 0.5rem;
+padding-top: 0.75rem;
+padding-bottom: 0.75rem;
+box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+position: relative;
 }
-.calc-btn.bg-emerald-500:hover,
-.calc-btn.bg-emerald-500:focus-visible {
-@apply bg-yellow-500 border-yellow-600;
+.calc-btn.bg-emerald-500::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+opacity: 0;
+transition: opacity 0.3s ease;
+border-radius: 0.5rem;
+pointer-events: none;
+}
+.calc-btn.bg-emerald-500:hover::after {
+opacity: 1;
+}
+.calc-btn.bg-emerald-500:hover {
+background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+@apply -translate-y-2;
 }
 .calc-btn.bg-emerald-500:active {
-@apply bg-yellow-600;
+background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+@apply scale-95;
+}
+
+/* Purple gradient for sqrt and power buttons */
+.calc-btn.bg-purple-500 {
+background: linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #7e22ce 100%);
+@apply border-0 text-white font-bold;
+box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+position: relative;
+}
+.calc-btn.bg-purple-500::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+opacity: 0;
+transition: opacity 0.3s ease;
+border-radius: 1rem;
+pointer-events: none;
+}
+.calc-btn.bg-purple-500:hover::after {
+opacity: 1;
+}
+.calc-btn.bg-purple-500:hover {
+background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #9333ea 100%);
+box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+@apply -translate-y-2;
+}
+.calc-btn.bg-purple-500:active {
+background: linear-gradient(135deg, #9333ea 0%, #7e22ce 50%, #6b21a8 100%);
+box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+@apply scale-95;
+}
+
+/* Orange gradient for backspace button */
+.calc-btn.bg-orange-500 {
+background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+@apply border-0 text-white font-bold;
+box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+position: relative;
+}
+.calc-btn.bg-orange-500::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+opacity: 0;
+transition: opacity 0.3s ease;
+border-radius: 1rem;
+pointer-events: none;
+}
+.calc-btn.bg-orange-500:hover::after {
+opacity: 1;
+}
+.calc-btn.bg-orange-500:hover {
+background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+@apply -translate-y-2;
+}
+.calc-btn.bg-orange-500:active {
+background: linear-gradient(135deg, #ea580c 0%, #c2410c 50%, #92220c 100%);
+box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+@apply scale-95;
 }
 
 /* Zero button spans two columns, maintain rounded-pill */
@@ -65,7 +229,14 @@ border-radius: 9999px;
 }
 .calc-btn.bg-emerald-500 {
 font-size: 2.2rem;
-padding-top: 1rem;
-padding-bottom: 1rem;
+padding-top: 0.75rem;
+padding-bottom: 0.75rem;
+}
+}
+
+/* Tablet optimization */
+@media (min-width: 481px) and (max-width: 768px) {
+.calc-btn {
+@apply px-6 py-4 text-2xl;
 }
 }

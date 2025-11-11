@@ -64,38 +64,54 @@
   <link rel='icon' type='image/x-icon' href='./images/favicon.ico' />
 </head>
 
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 select-none">
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 select-none min-h-screen">
 
   <main class="flex flex-col items-center justify-center min-h-screen p-4 lg:p-8" role="application" aria-label="Calculator application">
+    <!-- Decorative Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-400/5 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-emerald-400/5 to-transparent rounded-full blur-3xl"></div>
+    </div>
+
     <!-- Header -->
-    <header class="flex items-center justify-between w-full max-w-3xl mb-6 lg:mb-10">
+    <header class="relative flex items-center justify-between w-full max-w-4xl mb-8 lg:mb-12 z-10">
       <!-- Dark Mode Toggle -->
       <button id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode"
-        class="flex items-center justify-center w-14 h-14 rounded-full bg-gray-300 dark:bg-gray-700 hover:ring-2 ring-offset-2 ring-amber-400 transition text-2xl">
-        <i class="fa-solid fa-sun text-yellow-500 dark:hidden"></i>
-        <i class="fa-solid fa-moon text-gray-200 hidden dark:block"></i>
+        class="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-400 dark:from-blue-400 dark:to-blue-500 shadow-lg hover:shadow-xl hover:ring-2 ring-offset-2 ring-white dark:ring-offset-gray-900 transition-all duration-300 text-2xl transform hover:scale-110 active:scale-95">
+        <i class="fa-solid fa-sun text-yellow-600 dark:hidden"></i>
+        <i class="fa-solid fa-moon text-blue-900 hidden dark:block"></i>
       </button>
 
-      <!-- Title -->
-      <h1 class="text-3xl sm:text-3xl lg:text-5xl font-extrabold text-amber-500 text-center">CALCULATOR</h1>
+      <!-- Title with Glow Effect -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center relative">
+        <span class="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent drop-shadow-lg">
+          CALCULATOR
+        </span>
+        <div class="absolute inset-0 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 blur opacity-30 -z-10 rounded-lg"></div>
+      </h1>
 
       <!-- History Button -->
       <button id="history-btn" aria-label="Open calculation history"
-        class="flex items-center justify-center w-14 h-14 rounded-full bg-gray-300 dark:bg-gray-700 hover:ring-2 ring-offset-2 ring-amber-400 transition text-2xl">
-        <i class="fa-solid fa-clock-rotate-left"></i>
+        class="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 dark:from-gray-700 dark:to-gray-600 shadow-lg hover:shadow-xl hover:ring-2 ring-offset-2 ring-white dark:ring-offset-gray-900 transition-all duration-300 text-2xl transform hover:scale-110 active:scale-95">
+        <i class="fa-solid fa-clock-rotate-left text-amber-700 dark:text-amber-400"></i>
       </button>
     </header>
 
-    <!-- Calculator Card -->
-    <section class="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 lg:p-10">
-      <!-- Screen -->
-      <div class="mb-8">
+    <!-- Calculator Card with Premium Styling -->
+    <section class="relative w-full max-w-4xl bg-gradient-to-br from-white/95 to-gray-50/95 dark:from-gray-800/95 dark:to-gray-900/95 rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-xl border border-white/30 dark:border-gray-700/50 z-10 hover:shadow-2xl transition-all duration-300">
+      <!-- Gradient Border Effect -->
+      <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-400/20 to-emerald-400/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+      <!-- Screen Display -->
+      <div class="mb-8 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-2xl blur opacity-50"></div>
         <input id="answer" type="text" readonly aria-live="polite"
-          class="w-full text-right text-4xl sm:text-5xl lg:text-6xl p-6 rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-white focus:outline-none font-semibold" />
+          class="relative w-full text-right text-5xl sm:text-6xl lg:text-7xl p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 dark:text-white focus:outline-none font-bold font-mono tracking-wider shadow-inner border border-gray-200/50 dark:border-gray-600/50" 
+          placeholder="0" />
       </div>
 
       <!-- Buttons Grid -->
-      <div class="grid grid-cols-4 gap-4 text-xl">
+      <div class="grid grid-cols-4 gap-4 text-xl mb-6 relative z-20">
         <button value="(" aria-label="Left parenthesis" class="calc-btn">(</button>
         <button value=")" aria-label="Right parenthesis" class="calc-btn">)</button>
         <button value="C" aria-label="Clear all" class="calc-btn bg-red-500">C</button>
@@ -120,28 +136,75 @@
         <button value="." aria-label="Decimal" class="calc-btn">.</button>
         <button value="/" aria-label="Divide" class="calc-btn bg-yellow-400">÷</button>
 
+        <button value="sqrt" aria-label="Square root (S)" class="calc-btn bg-purple-500">√</button>
+        <button value="^" aria-label="Power exponent (^)" class="calc-btn bg-purple-500">x^y</button>
+        <button value="⌫" aria-label="Backspace" class="calc-btn bg-orange-500"><i class="fa-solid fa-delete-left"></i></button>
+
         <button value="=" aria-label="Equals" class="calc-btn col-span-4 bg-emerald-500">=</button>
       </div>
 
-      <!-- Footer -->
-      <p class="mt-6 text-center text-lg">
-        Made with <i class="fa-solid fa-heart text-red-500"></i> by
-        <a href="https://harsh98trivedi.github.io" target="_blank" class="text-blue-500 underline">Harsh Trivedi</a>
-      </p>
+      <!-- Footer with Keyboard Shortcuts -->
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700/50">
+        <p class="text-center text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4">
+          Made with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> by
+          <a href="https://harsh98trivedi.github.io" target="_blank" rel="noopener noreferrer" class="font-semibold text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300 transition-colors duration-200 underline decoration-amber-400/30 hover:decoration-amber-400">Harsh Trivedi</a>
+        </p>
+        
+        <!-- Keyboard Shortcuts Section -->
+        <details class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
+          <summary class="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2 select-none">
+            <i class="fa-solid fa-keyboard text-amber-500"></i>
+            <span>Keyboard Shortcuts</span>
+            <i class="fa-solid fa-chevron-down text-gray-500 ml-auto transition-transform duration-300"></i>
+          </summary>
+          <div class="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex justify-between items-center p-2 bg-white dark:bg-gray-600 rounded">
+                <span class="font-mono font-bold text-gray-900 dark:text-white">Enter</span>
+                <span>=</span>
+              </div>
+              <div class="flex justify-between items-center p-2 bg-white dark:bg-gray-600 rounded">
+                <span class="font-mono font-bold text-gray-900 dark:text-white">Backspace</span>
+                <span>Delete</span>
+              </div>
+              <div class="flex justify-between items-center p-2 bg-white dark:bg-gray-600 rounded">
+                <span class="font-mono font-bold text-gray-900 dark:text-white">S</span>
+                <span>√</span>
+              </div>
+              <div class="flex justify-between items-center p-2 bg-white dark:bg-gray-600 rounded">
+                <span class="font-mono font-bold text-gray-900 dark:text-white">^</span>
+                <span>Power</span>
+              </div>
+              <div class="flex justify-between items-center p-2 bg-white dark:bg-gray-600 rounded">
+                <span class="font-mono font-bold text-gray-900 dark:text-white">D</span>
+                <span>Dark Mode</span>
+              </div>
+              <div class="flex justify-between items-center p-2 bg-white dark:bg-gray-600 rounded">
+                <span class="font-mono font-bold text-gray-900 dark:text-white">H</span>
+                <span>History</span>
+              </div>
+              <div class="flex justify-between items-center p-2 bg-white dark:bg-gray-600 rounded">
+                <span class="font-mono font-bold text-gray-900 dark:text-white">C</span>
+                <span>Clear</span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
     </section>
   </main>
 
-  <!-- History Panel -->
+  <!-- History Panel - Enhanced -->
   <aside id="history-panel"
-    class="fixed bottom-0 sm:top-0 sm:right-0 w-full sm:w-[30rem] h-2/5 sm:h-full bg-white dark:bg-gray-800 shadow-lg transform translate-y-full sm:translate-x-full transition-transform z-50 p-4 overflow-y-auto"
+    class="fixed bottom-0 sm:top-0 sm:right-0 w-full sm:w-[32rem] h-2/5 sm:h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl transform translate-y-full sm:translate-x-full transition-transform duration-300 z-50 p-6 overflow-y-auto backdrop-blur-sm border-t sm:border-l border-gray-200/50 dark:border-gray-700/50"
     aria-hidden="true" aria-label="Calculation history panel">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold">History</h2>
-      <div class="flex gap-2">
+    <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200 dark:border-gray-700/50">
+      <h2 class="text-2xl font-bold bg-gradient-to-r from-amber-500 to-yellow-500 bg-clip-text text-transparent">History</h2>
+      <div class="flex gap-3">
         <button id="clear-history" aria-label="Clear history"
-          class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">Clear</button>
+          class="px-4 py-2 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md hover:shadow-lg font-semibold text-sm">Clear</button>
         <button id="close-history" aria-label="Close history panel"
-          class="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded hover:bg-gray-400 dark:hover:bg-gray-600 transition">Close</button>
+          class="px-4 py-2 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-600 transition-all duration-200 shadow-md hover:shadow-lg font-semibold text-sm">Close</button>
       </div>
     </div>
     <div id="history-list" class="space-y-3"></div>
