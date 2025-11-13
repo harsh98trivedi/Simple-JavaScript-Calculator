@@ -151,3 +151,71 @@ const screen = document.getElementById('answer');
         e.preventDefault();
       }
     });
+
+// --- BEGIN: square button handler (added by you) ---
+(function() {
+  // Try common display selectors — update if your project uses a different id/class
+  const displayEl =
+    document.getElementById('display') ||
+    document.getElementById('result') ||
+    document.getElementById('screen') ||
+    document.querySelector('.display') ||
+    document.querySelector('.screen') ||
+    document.querySelector('input[type="text"]');
+
+  if (!displayEl) {
+    console.warn('Square handler: display element not found. Please update selector in the handler.');
+    return;
+  }
+
+  const squareBtn = document.getElementById('btn-square');
+  if (!squareBtn) {
+    console.warn('Square handler: btn-square not found. Ensure you added the button with id="btn-square".');
+    return;
+  }
+
+  function formatResult(n) {
+    if (!isFinite(n)) return String(n);
+    if (Math.abs(Math.round(n) - n) < 1e-12) return String(Math.round(n));
+    return Number(n.toFixed(8)).toString();
+  }
+
+  squareBtn.addEventListener('click', () => {
+    // Read text from the display — supports either input.value or element.innerText
+    let text = (displayEl.value !== undefined) ? displayEl.value : (displayEl.innerText || displayEl.textContent || '');
+    text = text.toString().trim().replace(/,/g, '');
+
+    if (text === '') {
+      // nothing entered — show 0
+      if ('value' in displayEl) displayEl.value = '0';
+      else displayEl.innerText = '0';
+      return;
+    }
+
+    // If the display looks like a plain number, parse it. Otherwise try limited evaluation.
+    let value;
+    if (/^[+-]?\d*\.?\d+(e[+-]?\d+)?$/i.test(text)) {
+      value = Number(text);
+    } else {
+      // allow only safe characters for simple expressions
+      const safe = /^[0-9+\-*/().\s]+$/;
+      try {
+        if (safe.test(text)) {
+          value = Function('"use strict"; return (' + text + ')')();
+        } else {
+          throw new Error('Unsafe expression');
+        }
+      } catch (err) {
+        if ('value' in displayEl) displayEl.value = 'Error';
+        else displayEl.innerText = 'Error';
+        return;
+      }
+    }
+
+    const squared = value * value;
+    const out = formatResult(squared);
+    if ('value' in displayEl) displayEl.value = out;
+    else displayEl.innerText = out;
+  });
+})();
+// --- END: square button handler ---
