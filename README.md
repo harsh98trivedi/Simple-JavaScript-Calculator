@@ -1,25 +1,38 @@
 # Simple JavaScript Calculator
 
-[![Simple Javascript Calculator](https://raw.githubusercontent.com/harsh98trivedi/Simple-JavaScript-Calculator/master/images/meta.jpg)](https://harsh98trivedi.github.io/Simple-JavaScript-Calculator)
+[![Simple Javascript Calculator](https://raw.githubusercontent.com/harsh98trivedi/Simple-JavaScript-Calculator/master/images/meta.jpg)](https://ajay12git.github.io/Simple-JavaScript-Calculator-12git/)
 
-A simple JavaScript Calculator made by [Harsh Trivedi](https://harsh98trivedi.github.io).
+A simple JavaScript Calculator made by **Ajay**.
 
 ## Overview
 
-The Simple JavaScript Calculator is a straightforward web-based calculator built using JavaScript. It provides basic arithmetic operations to help users perform calculations quickly and efficiently.
+The Simple JavaScript Calculator is a lightweight, web-based calculator built using JavaScript, HTML, and CSS.  
+It provides basic arithmetic operations and some enhanced features to help users perform calculations quickly and efficiently.
+
+### Custom Feature
+
+- Added a **x² (square)** button that allows users to square the current number or expression on the display.
+
+## Live Demo
+
+Try the calculator online here:  
+[Simple JavaScript Calculator](https://ajay12git.github.io/Simple-JavaScript-Calculator-12git/)
 
 ## Usage
 
-You can access the Simple JavaScript Calculator by visiting the following link: [Simple JavaScript Calculator]([https://harsh98trivedi.github.io/Simple-JavaScript-Calculator](https://ajay12git.github.io/Simple-JavaScript-Calculator-12git/))
-
-Simply enter your mathematical expressions and use the calculator's features to perform calculations with ease.
+1. Open the live demo link.  
+2. Enter your mathematical expression in the display.  
+3. Click the buttons to perform calculations.  
+4. Use the **x²** button to quickly square any number or expression.
 
 ## Contributors
 
-Contributors are always welcome to make contributions to this project and help improve it. If you'd like to contribute or work on available issues, feel free to do so. Let's collaborate and make this calculator even better!
+Contributions are welcome! If you’d like to help improve this calculator or add new features, feel free to fork the project, make changes, and submit a pull request.
 
-## Happy Coding!
+## Contact
 
-We hope you find this Simple JavaScript Calculator useful and enjoy using it for your calculations. If you have any questions or suggestions, please don't hesitate to reach out to [Harsh Trivedi](https://harsh98trivedi.github.io).
+For questions, suggestions, or collaboration, reach out to **Ajay**.
+
+---
 
 Happy coding!
