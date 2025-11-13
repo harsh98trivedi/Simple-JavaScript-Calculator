@@ -14,7 +14,7 @@ You can access the Simple JavaScript Calculator by visiting the following link: 
 
 Simply enter your mathematical expressions and use the calculator's features to perform calculations with ease.
 
-![Screenshot](https://i.postimg.cc/FRGgDqGH/image.png)
+![Screenshot](https://i.postimg.cc/cCXfZ5bf/image.png)
 
 ## What Makes This Calculator Special?
 
